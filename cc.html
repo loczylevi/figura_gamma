@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Detection Example</title>
+    <style>
+        body {
+            height: 4500px; /* A nagy magasság biztosítja, hogy lehessen görgetni az oldalon */
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .content {
+            padding: 20px;
+        }
+        .message {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            display: none; /* Kezdetben elrejtve */
+        }
+        #message2 {
+            top: 50px; /* Másik üzenet elhelyezése az első alatt */
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>Scroll Detection Example</h1>
+        <p>Görgesd le az oldalt, hogy elérd az 500. és 1000. pixelt!</p>
+    </div>
+    <div id="message1" class="message">You have reached the 500th pixel!</div>
+    <div id="message2" class="message">You have reached the 1000th pixel!</div>
+    <script>
+        window.addEventListener('scroll', function() {
+            var message1 = document.getElementById('message1');
+            var message2 = document.getElementById('message2');
+            // Check if the user has scrolled past the 500th pixel
+            if (window.scrollY >= 500) {
+                message1.style.display = 'block'; // Megjelenítjük az első üzenetet
+            } else {
+                message1.style.display = 'none'; // Elrejtjük az első üzenetet, ha nem érték el az 500. pixelt
+            }
+            // Check if the user has scrolled past the 1000th pixel
+            if (window.scrollY >= 1000) {
+                message2.style.display = 'block'; // Megjelenítjük a második üzenetet
+            } else {
+                message2.style.display = 'none'; // Elrejtjük a második üzenetet, ha nem érték el az 1000. pixelt
+            }
+
+            if (window.scrollY >= 3000) {
+                message1.style.display = 'none'; // Elrejtjük az üzenetet, ha nem érték el az 500. pixelt
+                message2.style.display = 'none';
+
+            }
+        });
+
+        
+    </script>
+</body>
+</html>
